@@ -1,0 +1,276 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: radial-gradient(circle at center, #2e0000, #000000);
+    color: white;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: black;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.logo img {
+    margin-top: 5px;
+}
+
+.logo span {
+    color: #ff0000;
+}
+
+.navbar nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 14px;
+}
+
+.navbar nav a:hover {
+    color: #f5a3a6;
+}
+
+.login-btn {
+    background: #ff0000;
+    border: none;
+    color: white;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.login-btn:hover {
+    background-color: #ab0a0a;
+    transform: translateX(-5px);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 80px);
+}
+
+.login-box {
+    width: 400px;
+    background: #181111;
+    border-radius: 15px;
+    border: 1px solid #333;
+    overflow: hidden;
+    padding-bottom: 30px;
+    /* margin-top: 90px; */
+}
+
+.image-header {
+    width: 100%;
+    height: 110px;          /* đủ cao để bucket nhô lên rõ */
+    background: #0d0606;
+    overflow: hidden;
+    position: relative;
+}
+ 
+/* vignette: tối 4 cạnh, đặc biệt bottom fade vào card */
+.image-header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+}
+ 
+.image-header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 1%;
+    display: block;
+    position: absolute;
+    bottom: -10px;
+    left: 10px;
+    transform: scale(1.2);
+}
+
+.form-content {
+    padding: 0 25px;
+    text-align: center;
+}
+
+.form-content h2 {
+    margin: 20px 0 30px;
+    font-size: 24px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-size: 13px;
+    color: white;
+    margin-bottom: 8px;
+}
+
+.input-wrapper {
+    position: relative;
+    font-size: 15px;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 12px;
+    background: #271B1B;
+    border: 1px solid #4f3637;
+    border-radius: 8px;
+    color: #a48788;
+    outline: none;
+}
+
+.input-wrapper input::placeholder {
+    color: #a48788;
+}
+
+.input-wrapper i {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #a48788;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    position: relative; /* Giữ nguyên để làm gốc tọa độ */
+    color: white;
+    opacity: 0.6;
+}
+
+/* Ẩn checkbox thật */
+.remember-me input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2; /* Đưa lên trên cùng để nhận click */
+}
+
+/* Checkbox fake */
+.box {
+    width: 16px;
+    height: 16px;
+    background: #271B1B;
+    border: 1px solid #4f3637;
+    margin-top: 3px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    position: relative; /* Quan trọng để căn cái tick bên trong */
+    z-index: 1; 
+}
+
+/* Checked */
+.remember-me input:checked + .box {
+    background: red;
+}
+
+/* Tick */
+.box::after {
+    content: "";
+    position: absolute;
+    display: none;     /* Căn giữa cái tick */
+    left: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.remember-me input:checked + .box::after {
+    display: block;
+    left: 4px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background: #ff0000;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.1s ease;
+}
+
+.submit-btn:hover {
+    background: #f5a3a6;;
+    box-shadow: 0 6px 24px rgba(232, 25, 44, 0.45);
+    transform: translateY(-5px);
+}
+
+.options a {
+    font-size: 14px;
+    text-decoration: none;
+    color: #a48788;
+}
+
+.forgot-pw:hover {
+    color: red;
+    text-decoration: underline;
+}
+
+.register-text {
+    margin-top: 20px;
+    font-size: 13px;
+    color: #888;
+}
+
+.register-text a {
+    color: #ff0000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-text a:hover {
+    text-decoration: underline;
+}
