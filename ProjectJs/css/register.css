@@ -1,0 +1,322 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: radial-gradient(circle at center, #2e0000, #000000);
+    color: white;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: black;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.logo img {
+    margin-top: 5px;
+}
+
+.logo span {
+    color: #ff0000;
+}
+
+.navbar nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 14px;
+}
+
+.navbar nav a:hover {
+    color: #f5a3a6;
+}
+
+
+.login-btn {
+    background: #ff0000;
+    border: none;
+    color: white;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.login-btn:hover {
+    background-color: #a50000;
+    transform: translateX(-5px);
+}
+
+.hero {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px 0;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('../assets/images/baaf5bbe2cf6344e9a5fb9af666fa17f2aaf9986.png');
+    background-size: cover;
+    background-position: center bottom 60%;
+    filter: brightness(0.7);
+    z-index: 0;
+}
+
+.card {
+    position: relative;
+    z-index: 1;
+    width: 480px !important;
+    height: 864px;
+    background: #111827;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 36px 32px 28px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    margin-top: 100px;
+}
+
+.card-title {
+    font-size: 29px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 16px;
+    margin-bottom: 8px;
+    color: #fff;
+}
+
+.card-sub {
+    font-size: 16px;
+    color: #8e9cb8;
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 16px;
+    color: #aab4c8;
+    margin-bottom: 7px;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 11px 42px 11px 14px;
+    background: #172030;
+    border: 1px solid #2e3148;
+    border-radius: 7px;
+    color: white;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-wrapper input::placeholder {
+    color: #c1cce3;
+    opacity: 0.6;
+}
+
+.input-wrapper input:focus {
+    border-color: #cc0000;
+    box-shadow: 0 0 0 3px rgba(204, 0, 0, 0.15);
+}
+
+.input-wrapper .eye-btn {
+    position: absolute;
+    right: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #555;
+    cursor: pointer;
+    padding: 0;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.input-wrapper .eye-btn:hover {
+    color: #cc0000;
+}
+
+.checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    position: relative; /* Giữ nguyên để làm gốc tọa độ */
+    margin-bottom: 36px;
+    color: #8e9cb8;
+    margin-bottom: 30px;
+}
+
+.checkbox a {
+    color: #cc0000;
+    text-decoration: none;
+    font-weight: 500;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 3;
+}
+
+.checkbox a:hover {
+    text-decoration: underline;
+}
+
+/* Ẩn checkbox thật */
+.checkbox input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2; /* Đưa lên trên cùng để nhận click */
+}
+
+/* Checkbox fake */
+.box {
+    width: 18px;
+    height: 18px;
+    background: #111827;
+    border: 1px solid #8b8686;
+    border-radius: 4px;
+    flex-shrink: 0;
+    position: relative; /* Quan trọng để căn cái tick bên trong */
+    z-index: 1; 
+    margin-top: 5px;
+    line-height: 1.5;
+}
+
+/* Checked */
+.checkbox input:checked + .box {
+    background: red;
+}
+
+/* Tick */
+.box::after {
+    content: "";
+    position: absolute;
+    display: none;     /* Căn giữa cái tick */
+    left: 5px;
+    top: 1px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.checkbox input:checked + .box::after {
+    display: block;
+    left: 5px;
+    top: 1px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 13px;
+    background: #cc0000;
+    border: none;
+    border-radius: 7px;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    margin-bottom: 50px;
+}
+
+.submit-btn:hover {
+    background: #a50000;
+    transform: translateY(-12px);
+    box-shadow: 0 6px 20px rgba(204, 0, 0, 0.4);
+}
+
+.login-link {
+    text-align: center;
+    font-size: 16px;
+    color: #8e9cb8;
+}
+
+.login-link a {
+    color: #ff0000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+.footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 18px;
+    font-size: 15px;
+    color: white;
+    margin-top: 17px;
+    opacity: 0.6;
+    margin-bottom: 100px;
+}
+
+.error {
+    color: #ff4d4d;
+    font-size: 12px;
+    margin-top: 3px;
+    display: block;
+    min-height: 15px; /* Giữ chỗ để layout không bị nhảy khi hiện lỗi */
+}
+
+#error-agree {
+    margin-top: -20px;
+    margin-bottom: 17px;
+}
+
+/* Bạn có thể thêm border đỏ cho input khi sai */
+input.invalid {
+    border: 1px solid #ff4d4d !important;
+}

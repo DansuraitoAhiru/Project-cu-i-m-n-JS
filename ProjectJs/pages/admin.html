@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rikkei Cinema - Quản lý phim</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <div class="dashboard">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="https://rikkei.edu.vn/wp-content/uploads/2022/04/Logo-Rikkei.png" alt="Logo"> 
+                <span>Cinema</span>
+            </div>
+            
+            <nav class="menu">
+                <a href="#" class="menu-item active">
+                    <i class="fa-solid fa-film"></i> Quản lý phim
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fa-solid fa-ticket"></i> Quản lý vé
+                </a>
+            </nav>
+
+            <div class="user-profile">
+                <img src="https://via.placeholder.com/40" alt="Avatar" class="avatar">
+                <div class="user-info">
+                    <p class="name">Admin Quản lý</p>
+                    <p class="email">vqviet@rikkei.edu.vn</p>
+                </div>
+                <div id="logout">
+                    <i class="fa-solid fa-right-from-bracket logout-icon"></i>
+                </div>
+            </div>
+        </aside>
+
+        <main class="content">
+            <header class="content-header">
+                <div class="title-section">
+                    <h1>Quản lý danh sách phim</h1>
+                    <p>Xem, chỉnh sửa và quản lý tất cả phim hiện có trên hệ thống.</p>
+                </div>
+                <div class="action-section">
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Tìm tên phim...">
+                    </div>
+                    <button class="btn-add"><i class="fa-solid fa-plus"></i> Thêm phim mới</button>
+                </div>
+            </header>
+
+            <div class="tabs">
+                <button class="tab active">Tất cả (24)</button>
+                <button class="tab">Đang chiếu (8)</button>
+                <button class="tab">Sắp chiếu (5)</button>
+                <button class="tab">Đã chiếu (11)</button>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ẢNH BÌA</th>
+                            <th>TÊN PHIM</th>
+                            <th>THỂ LOẠI</th>
+                            <th>THỜI LƯỢNG</th>
+                            <th>NGÀY KHỞI CHIẾU</th>
+                            <th>TRẠNG THÁI</th>
+                            <th>THAO TÁC</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/45x65" class="movie-poster"></td>
+                            <td>
+                                <div class="movie-name">Dune: Part Two</div>
+                                <div class="sub-name">Hành tinh cát: Phần hai</div>
+                            </td>
+                            <td>
+                                <span class="tag">Hành động</span>
+                                <span class="tag">Viễn tưởng</span>
+                            </td>
+                            <td>166 phút</td>
+                            <td>01/03/2024</td>
+                            <td><span class="status showing">Đang chiếu</span></td>
+                            <td class="actions">
+                                <i class="fa-solid fa-pen"></i>
+                                <i class="fa-solid fa-circle-xmark"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://via.placeholder.com/45x65" class="movie-poster"></td>
+                            <td>
+                                <div class="movie-name">Mai</div>
+                                <div class="sub-name">Mai</div>
+                            </td>
+                            <td>
+                                <span class="tag">Tâm lý</span>
+                                <span class="tag">Tình cảm</span>
+                            </td>
+                            <td>131 phút</td>
+                            <td>10/02/2024</td>
+                            <td><span class="status ended">Đã chiếu</span></td>
+                            <td class="actions">
+                                <i class="fa-solid fa-pen"></i>
+                                <i class="fa-solid fa-circle-xmark"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="pagination-container">
+                    <span class="info">Hiển thị 1-5 trên 24 phim</span>
+                    <div class="pagination">
+                        <button class="p-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button class="p-btn active">1</button>
+                        <button class="p-btn">2</button>
+                        <button class="p-btn">3</button>
+                        <span class="dots">...</span>
+                        <button class="p-btn">5</button>
+                        <button class="p-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/admin.js"></script>
+</body>
+</html>
