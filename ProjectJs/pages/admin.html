@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rikkei Cinema - Quản lý phim</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
+</head>
+
+<body>
+    <div class="dashboard">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="../assets/images/icon3.png" alt="Logo">
+                Rikkei<span>Cinema</span>
+            </div>
+
+            <nav class="menu">
+                <a href="#" class="menu-item active">
+                    <i class="fa-solid fa-film"></i> Quản lý phim
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fa-solid fa-ticket"></i> Quản lý vé
+                </a>
+            </nav>
+
+            <div class="user-profile">
+                <img src="https://i.redd.it/qzzvvl7yvil91.jpg" alt="Avatar" class="avatar">
+                <div class="user-info">
+                    <p class="name">Admin Quản lý</p>
+                    <p class="email">vqviet@gmail.com</p>
+                </div>
+                <div id="logout">
+                    <i class="fa-solid fa-right-from-bracket logout-icon"></i>
+                </div>
+            </div>
+        </aside>
+
+        <main class="content">
+            <header class="content-header">
+                <div class="title-section">
+                    <h1>Quản lý danh sách phim</h1>
+                    <p>Xem, chỉnh sửa và quản lý tất cả phim hiện có trên hệ thống.</p>
+                </div>
+                <div class="action-section">
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Tìm tên phim...">
+                    </div>
+                    <button class="btn-add" id="openModal"><i class="fa-solid fa-plus"></i> Thêm phim mới</button>
+                </div>
+            </header>
+
+            <div class="tabs">
+                <button class="tab active">Tất cả (24)</button>
+                <button class="tab">Đang chiếu (8)</button>
+                <button class="tab">Sắp chiếu (5)</button>
+                <button class="tab">Đã chiếu (11)</button>
+            </div>
+
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <div class="empty-state-icon">🎥</div>
+                <div class="empty-state-text">Không có phim nào. Hãy thêm phim mới!</div>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ẢNH BÌA</th>
+                            <th>TÊN PHIM</th>
+                            <th>THỂ LOẠI</th>
+                            <th>THỜI LƯỢNG</th>
+                            <th>NGÀY KHỞI CHIẾU</th>
+                            <th>TRẠNG THÁI</th>
+                            <th>THAO TÁC</th>
+                        </tr>
+                    </thead>
+                    <tbody id="movieTable">
+                    </tbody>
+                </table>
+
+                <div class="pagination-container">
+                    <span class="info">Hiển thị 1-5 trên 24 phim</span>
+                    <div class="pagination">
+                        <button class="p-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button class="p-btn active">1</button>
+                        <button class="p-btn">2</button>
+                        <button class="p-btn">3</button>
+                        <span class="dots">...</span>
+                        <button class="p-btn">5</button>
+                        <button class="p-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="modal-overlay" id="modalOverlay">
+        <form class="modal-container" id="modal-body">
+            <div class="modal-header">
+                <h2>Thêm Phim Mới</h2>
+                <span class="close-btn" id="closeIcon">&times;</span>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group full-width">
+                    <label for="movieName">Tên phim <span class="required">*</span></label>
+                    <input type="text" id="movieName" name="moiveName" placeholder="Nhập tên phim">
+                    <span class="error" id="error-name"></span>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="genres">Thể loại <span class="required">*</span></label>
+                        <select id="genres" name="genres" multiple>
+                            <option value="">Chọn thể loại</option>
+                            <option value="Hành động">Hành động</option>
+                            <option value="Tình cảm">Tình cảm</option>
+                            <option value="Viễn tưởng">Viễn tưởng</option>
+                            <option value="Hài">Hài</option>
+                            <option value="Tâm lý">Tâm lý</option>
+                            <option value="Kinh dị">Kinh dị</option> 
+                            <option value="Khác">Khác</option>
+                        </select>
+                        <span class="error" id="error-genres"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="duration">Thời lượng (phút) <span class="required">*</span></label>
+                        <input id="duration" name="duration" type="text" placeholder="Ví dụ: 120">
+                        <span class="error" id="error-duration"></span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="releaseDate">Ngày khởi chiếu <span class="required">*</span></label>
+                        <input id="releaseDate" name="releaseDate" type="date">
+                        <span class="error" id="error-date"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Trạng thái</label>
+                        <select id="status" name="status">
+                            <option value="1">Đang chiếu</option>
+                            <option value="2">Sắp chiếu</option>
+                            <option value="0">Đã chiếu</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="price">Giá vé <span class="required">*</span></label>
+                    <input type="text" id="price" name="price" placeholder="Nhập giá vé ....">
+                    <span class="error" id="error-price"></span>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="linkUrl">URL Ảnh bìa</label>
+                    <div class="input-with-button">
+                        <input type="text" id="linkUrl" name="linkUrl" placeholder="🔗 https://example.com/poster.jpg">
+                        <button class="btn-upload">Tải Ảnh</button>
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="description">Mô tả ngắn</label>
+                    <textarea rows="4" id="description" name="description" placeholder="Nhập tóm tắt nội dung phim..."></textarea>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-cancel" id="closeModal">Hủy</button>
+                <button class="btn-submit" id="submitBtn">+ Thêm mới</button>
+            </div>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/admin.js"></script>
+</body>
+
+</html>
