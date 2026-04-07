@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rikkei Cinema - Đăng ký</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/register.css">
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <img src="../assets/images/Icon.png" /> Rikkei<span>Cinema</span>
+        </div>
+        <nav id="nav">
+            <a href="login.html">Trang Chủ</a>
+            <a href="#">Thông Tin</a>
+            <a href="#">Liên Hệ</a>
+            <button class="login-btn"><a href="login.html">Đăng Nhập</a></button>
+        </nav>
+        <div class="detail" id="menu">
+            <p class="detail">≡</p>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="hero-bg"></div>
+        <div class="card">
+            <h1 class="card-title">Tạo tài khoản mới</h1>
+            <p class="card-sub">Đăng ký để đặt vé xem phim ngay hôm nay</p>
+
+            <form id="registerForm">
+                <div class="input-group">
+                    <label for="fullname">Họ và tên</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="fullname" placeholder="Nguyễn Văn A" autocomplete="name" />
+                    </div>
+                    <span class="error" id="error-name"></span>
+                </div>
+
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="email" placeholder="email@example.com" autocomplete="email" />
+                    </div>
+                    <span class="error" id="error-email"></span>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Mật khẩu</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="password" placeholder="Password" />
+                        <button class="eye-btn" type="button" onclick="togglePass(this)">
+                            <!-- this = chính button đang click vào -->
+                            <i class="fa-regular fa-eye-slash"></i>
+                        </button>
+                    </div>
+                    <span class="error" id="error-password"></span>
+                </div>
+
+                <div class="input-group">
+                    <label for="confirm">Xác nhận mật khẩu</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="confirm" placeholder="Nhập lại password" />
+                        <button class="eye-btn" type="button" onclick="togglePass(this)">
+                            <i class="fa-regular fa-eye-slash"></i>
+                        </button>
+                    </div>
+                    <span class="error" id="error-confirm"></span>
+                </div>
+
+                <div class="checkbox">
+                    <input type="checkbox" id="terms">
+                    <span class="box"></span>
+                    <label>Tôi đồng ý với <a
+                            href="https://www.vdsc.com.vn/dieu-khoan-va-chinh-sach-bao-mat/dieu-khoan-su-dung-website-h4?srsltid=AfmBOopDpNn4QxQMCRivGGqZqwj9ggOCOzUvi_b7QUV62uKFPmylASjJ">điều
+                            khoản sử dụng</a> và chính sách bảo mật của CineEdu.</label>
+                </div>
+                <span class="error" id="error-agree"></span>
+
+                <button class="submit-btn" type="submit">
+                    Đăng ký
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+                <p class="login-link">Đã có tài khoản? <a href="login.html">Đăng nhập ngay</a></p>
+            </form>
+
+        </div>
+        <div class="footer">© 2026 RikkeiEdu. Tất cả quyền được bảo mật .</div>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="../js/register.js"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rikkei Cinema - Đăng nhập</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <img src="../assets/images/Icon.png" /> Rikkei<span>Cinema</span>
+        </div>
+        <nav id="nav">
+            <a href="home.html">Trang Chủ</a>
+            <a href="#">Thông Tin</a>
+            <a href="#">Liên Hệ</a>
+            <button class="login-btn"><a href="login.html">Đăng Nhập</a></button>
+        </nav>
+        <div class="detail" id="menu">
+            <p class="detail">≡</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="login-box">
+            <div class="image-header">
+                <img src="../assets/images/Background.png" class="popcorn" alt="popcorn">
+            </div>
+
+            <div class="form-content">
+                <h2>Chào mừng quay trở <br>lại</h2>
+
+                <form id="loginForm">
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <div class="input-wrapper">
+                            <input type="text" id="email" placeholder="Nhập email của bạn">
+                            <i class="far fa-envelope"></i>
+                        </div>
+                        <span class="error" id="error-email"></span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="password">Mật khẩu</label>
+                        <div class="input-wrapper">
+                            <input type="password" id="password" placeholder="Password" />
+                            <button class="eye-btn" type="button" onclick="togglePass(this)">
+                                <!-- this = chính button đang click vào -->
+                                <i class="fa-regular fa-eye-slash"></i>
+                            </button>
+                        </div>
+                        <span class="error" id="error-password"></span>
+                    </div>
+
+                    <div class="options">
+                        <label class="remember-me">
+                            <input type="checkbox" id="remember-me">
+                            <span class="box"></span> Ghi nhớ đăng nhập
+                        </label>
+                        <a href="#" class="forgot-pw">Quên mật khẩu?</a>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        Đăng nhập <i class="fas fa-sign-in-alt"></i>
+                    </button>
+                </form>
+
+                <!-- Đây là nơi đặt thông báo lỗi/ thành công -->
+                <div id="toast-container"></div>
+
+                <p class="register-text">
+                    Bạn chưa có tài khoản? <a href="register.html">Đăng ký ngay</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/login.js"></script>
+</body>
+
+</html>

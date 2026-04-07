@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rikkei Cinema - Quản lý vé</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/ticket.css">
+    <link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
+</head>
+</head>
+
+<body>
+    <div class="dashboard">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="../assets/images/icon3.png" alt="Logo">
+                <p>Rikkei<span>Cinema</span></p>
+            </div>
+
+            <nav class="menu">
+                <a href="admin.html" class="menu-item">
+                    <i class="fa-solid fa-film"></i> Quản lý phim
+                </a>
+                <a href="ticket.html" class="menu-item active">
+                    <i class="fa-solid fa-ticket"></i> Quản lý vé
+                </a>
+            </nav>
+
+            <div class="user-profile">
+                <img src="https://i.redd.it/qzzvvl7yvil91.jpg" alt="Avatar" class="avatar">
+                <div class="user-info">
+                    <p class="name">Admin Quản lý</p>
+                    <p class="email">vqviet@gmail.com</p>
+                </div>
+                <div id="logout">
+                    <i class="fa-solid fa-right-from-bracket logout-icon"></i>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-header">
+                <h1>Quản lý vé đã đặt</h1>
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="search" placeholder="Tìm kiếm mã vé, tên khách...">
+                    <span id="clearSearch" class="clear-btn">&times;</span>
+                </div>
+                <img src="../assets/images/Button - Notification Bell.png" />
+            </header>
+
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-card-content">
+                        <div class="stat-label">Tổng vé hôm nay</div>
+                        <div class="stat-value">152</div>
+                        <div class="stat-sub green">+12% so với hôm qua</div>
+                    </div>
+                    <div class="icon">
+                        <img src="../assets/images/ticketicon.png" />
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Doanh thu ngày</div>
+                    <div class="stat-value">12.5tr<span>₫</span></div>
+                    <div class="stat-sub green">+5% so với mục tiêu</div>
+                    <div class="icon">
+                        <img src="../assets/images/ticketicon(1).png" />
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Vé chờ xác nhận</div>
+                    <div class="stat-value">5</div>
+                    <div class="stat-sub orange"><i class="fa-solid fa-triangle-exclamation"></i> Cần xử lý ngay</div>
+                    <div class="icon">
+                        <img src="../assets/images/ticketicon (2).png" />
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn-add-ticket"><span>+</span> Đặt vé</button>
+
+            <div class="table-wrapper">
+                <table class="ticket-table">
+                    <thead>
+                        <tr>
+                            <th>MÃ VÉ</th>
+                            <th>KHÁCH HÀNG</th>
+                            <th>PHIM</th>
+                            <th>SUẤT CHIẾU</th>
+                            <th>GHẾ</th>
+                            <th>TỔNG TIỀN</th>
+                            <th>TRẠNG THÁI</th>
+                            <th>THAO TÁC</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ticketTable">
+
+                    </tbody>
+                </table>
+
+                <div class="empty-state" id="emptyState" style="display: none;">
+                    <div class="empty-state-icon"><i class="fa-solid fa-ticket"></i></div>
+                    <div class="empty-state-text">Không có vé hay tên khách hàng nào</div>
+                </div>
+
+                <div class="pagination-container" >
+                    <span class="info"></span>
+                    <div class="pagination">
+                        
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/ticket.js"></script>
+</body>
+
+</html>

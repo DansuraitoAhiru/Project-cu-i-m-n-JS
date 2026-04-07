@@ -1,0 +1,655 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #1a0b0b;
+    color: #fff;
+    min-height: 100vh;
+}
+
+.dashboard {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 240px;
+    background-color: #0d0606;
+    border-right: 2px solid #331a1a;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: -10px 0px 20px;
+    border-bottom: 2px solid #331a1a;
+    padding: 11px 20px 20px;
+}
+
+.logo img {
+    margin-top: 5px;
+}
+
+.logo span {
+    color: #ff0000;
+    margin-left: 2px;
+}
+
+.navbar nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 14px;
+}
+
+.menu {
+    flex: 1;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #888;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.menu-item.active {
+    background-color: #331111;
+    color: #ff3b3b;
+    border-right: 3px solid #ff3b3b;
+}
+
+.user-profile {
+    padding: 20px;
+    border-top: 2px solid #331a1a;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.user-info .name {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.user-info .email {
+    font-size: 11px;
+    color: #666;
+}
+
+.logout-icon {
+    margin-left: auto;
+    color: #666;
+    cursor: pointer;
+}
+
+.logout-icon:hover {
+    color: #d6d0d0;
+}
+
+/* Main Content Area */
+.main-content {
+    flex-grow: 1;
+    padding: 30px 0;
+    overflow-y: auto;
+}
+
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-top: -10px;
+    border-bottom: 2px solid #331a1a;
+    padding: 0 18px 19px;
+}
+
+.search-box {
+    background: #2a1616;
+    border: 1px solid #442222;
+    border-radius: 4px;
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 500px;
+    margin-left: 400px;
+}
+
+.search-box input {
+    background: none;
+    border: none;
+    color: white;
+    outline: none;
+}
+
+.clear-btn {
+    width: 40px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 33px;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+    color: #aaa;
+    margin-left: 260px;
+    display: none;
+}
+
+.clear-btn:hover {
+    color: #fff;
+}
+
+.search-box img {
+    height: 36px;
+    width: 32px;
+    margin-top: 20px;
+}
+
+/* Thẻ thống kê */
+.stats-container {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+    padding: 0 30px;
+}
+
+.stat-card {
+    background-color: #231414;
+    padding: 25px;
+    border-radius: 12px;
+    border: 3px solid #2d2623;
+    min-height: 170px;
+    flex: 1; /* chia đều 3 cột */
+}
+
+.stat-label {
+    color: #a0a0a0;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.stat-value {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.stat-value span {
+    color: #8896a9;
+    opacity: 0.8;
+    font-size: 20px;
+}
+
+.stat-sub {
+    font-size: 14px;
+}
+
+.green {
+    color: #4cd964;
+}
+
+.orange {
+    color: #ff9500;
+}
+
+.icon {
+    opacity: 0.1;
+    margin-left: 280px;
+    margin-top: -100px;
+}
+
+.btn-add-ticket {
+    background-color: #e50914;
+    color: white;
+    border: none;
+    padding: 3px 24px 9px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 25px;
+    width: 180px;
+    font-size: 17px;
+    transition: all 0.2s ease;
+    margin-left: 30px;
+}
+
+.btn-add-ticket span {
+    margin-left: -36px;
+    margin-right: 27px;
+    font-size: 24px;
+}
+
+.btn-add-ticket:hover {
+    background-color: tomato;
+    transform: translateY(-10px);
+}
+
+.table-wrapper {
+    background-color: #231414;
+    border-radius: 8px;
+    border: 1px solid #2d2623;
+    text-align: center;
+    overflow: auto;
+    padding: 0;
+    padding-bottom: 30px;
+    margin: 0 30px;
+}
+
+.ticket-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.ticket-table th {
+    background-color: #392829;
+    text-align: center;
+    color: #a0a0a0;
+    font-size: 16px;
+    padding: 15px 10px;
+    border-bottom: 1px solid #2d2623;
+}
+
+.ticket-table thead {
+    display: table-header-group;
+}
+
+.ticket-table tr:hover {
+    background-color: #380707;
+}
+
+.ticket-table td {
+    padding: 18px 10px;
+    font-size: 18px;
+    border-bottom: 1px solid #2d2623;
+}
+
+.smallText {
+    color: #52546f;
+    font-size: 15px;
+    opacity: 0.8;
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 27px;
+    padding: 0;
+    height: 134px;
+    padding-right: 13px;
+}
+
+.actions button {
+    background: none;
+    border: none;
+    transition: all 0.2s;
+    color: #8896a9;;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+#editBtn:hover {
+    color: #39e9a5;
+}
+
+#deleteBtn:hover {
+    color: red;
+}
+
+.text-red {
+    color: #ff3b30;
+}
+
+.text-red:hover {
+    color: tomato;
+}
+
+.customerName:hover {
+    color: tomato;
+}
+
+.tag-seat {
+    background-color: #2d2623;
+    padding: 4px 10px;
+    border-radius: 4px;
+}
+
+.badge {
+    padding: 10px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.badge.success {
+    color: #4cd964;
+    background-color: rgba(76, 217, 100, 0.1);
+    border: 2px solid #4cd964;
+}
+
+.badge.waiting {
+    color: #ffcc00;
+    background-color: rgba(255, 204, 0, 0.1);
+    border: 2px solid #ffcc00;
+}
+
+.badge.cancel {
+    color: #b35151;
+    background-color: #411c1d;
+    border: 2px solid #831b1b;
+}
+
+/* Phân trang */
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding: 10px 20px 0;
+    color: #a0a0a0;
+    font-size: 12px;
+}
+
+.pagination-controls button {
+    background-color: transparent;
+    border: 1px solid #332b28;
+    color: white;
+    width: 35px;
+    height: 35px;
+    margin-left: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.pagination-controls button.active {
+    background-color: #3d1414;
+    color: #ff3b30;
+    border-color: #ff3b30;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #999;
+  display: none;
+}
+
+.empty-state.show {
+  display: block;
+}
+
+.empty-state-icon {
+  font-size: 64px;
+  margin-bottom: 16px;
+  color: red;
+}
+
+.empty-state-text {
+  font-size: 18px;
+}
+
+tbody td:nth-child(4) {
+    text-align: left;
+    font-size: 23px;
+}
+
+.pagination-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #666;
+    font-size: 13px;
+    padding: 0 20px;
+}
+
+.pagination-container .info {
+    font-size: 20px;
+    padding-top: 20px;
+}
+
+.pagination {
+    display: flex;
+    gap: 5px;
+}
+
+.p-btn {
+    width: 35px;
+    height: 35px;
+    background: #2a1616;
+    border: 1px solid #331a1a;
+    color: #888;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.dots {
+    width: 35px;
+    height: 35px;
+    background: #2a1616;
+    border: 1px solid #331a1a;
+    color: #888;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 20px;
+}
+
+.p-btn.active {
+    border-color: #ff3b3b;
+    color: #ff3b3b;
+    scale: 1.3;
+}
+
+.p-btn.inactive {
+    opacity: 0.4;
+}
+
+tbody tr {
+    animation: fadeUp 0.25s ease both;
+}
+
+tbody tr:nth-child(1) { animation-delay: 0.04s; }
+tbody tr:nth-child(2) { animation-delay: 0.08s; }
+tbody tr:nth-child(3) { animation-delay: 0.12s; }
+tbody tr:nth-child(4) { animation-delay: 0.16s; }
+tbody tr:nth-child(5) { animation-delay: 0.20s; }
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 1285px) {
+    .sidebar {
+        width: 80px;
+        /* Thu nhỏ sidebar */
+        padding: 30px 0 0;
+        align-items: center;
+    }
+
+    .logo p,
+    .menu-item {
+        font-size: 0;
+        justify-content: center;
+    }
+
+    .menu-item i {
+        font-size: 20px;
+        margin: 0;
+    }
+
+    .logo img {
+        margin: 0;
+        width: 40px;
+    }
+
+    /* Thu gọn thông tin user */
+    .user-profile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+    }
+
+    .user-info {
+        display: none;
+        /* Ẩn tên và email admin */
+    }
+
+    .avatar {
+        width: 45px;
+        height: 45px;
+        margin-bottom: 10px;
+    }
+
+    /* Điều chỉnh nội dung chính */
+    .main-content {
+        padding: 20px;
+    }
+
+    .table-wrapper {
+        padding: 10px;
+        overflow-x: auto;
+        /* Cho phép cuộn ngang bảng nếu quá dài */
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: 100px;
+        border-right: none;
+        border-bottom: 1px solid #331a1a;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0px 20px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .logo {
+        border: 0;
+        margin-top: 16px;
+    }
+
+    .logo img {
+        width: 0;
+    }
+
+    .logo p {
+        font-size: 36px;
+        margin: 20px -40px 0;
+    }
+
+    .menu {
+        display: flex;
+        flex: none;
+    }
+
+    .user-profile {
+        flex-direction: row;
+        border-top: none;
+        padding: 0;
+    }
+
+    .top-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+        border: 0;
+        padding: 0;
+    }
+
+    .search-box {
+        width: 90%;
+        margin-left: 10px;
+    }
+
+    .clear-btn {
+        margin-left: 290px;
+    }
+
+    .top-header img {
+        margin-left: 583px;
+        margin-top: -63px;
+        width: 50px;
+    }
+
+    .icon {
+        margin-left: 520px;
+    }
+
+    .stats-container {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .btn-add-ticket {
+        width: 100%;
+        justify-content: center;
+        margin: 20px 0;
+    }
+
+    .table-wrapper {
+        margin: 10px 0 0;
+        overflow: auto;
+        padding: 0;
+    }
+
+    .ticket-table {
+        min-width: 1500px;
+        /* Ép bảng rộng ra để không bị vỡ cột, kích hoạt cuộn ngang */
+    }
+
+    .pagination-container {
+        padding: 0 13px 30px;
+        gap: 19px;
+        text-align: center;
+    }
+
+    .pagination-container .info {
+        font-size: 17px;
+    }
+
+    .pagination {
+        padding-bottom: 20px;
+        padding-left: 39px;
+    }
+}
+
+/* Hiệu ứng xuất hiện */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
