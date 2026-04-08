@@ -81,7 +81,7 @@
                 </div>
             </div>
 
-            <button class="btn-add-ticket"><span>+</span> Đặt vé</button>
+            <button type="button" class="btn-add-ticket" id="addBtn"><span>+</span> Đặt vé</button>
 
             <div class="table-wrapper">
                 <table class="ticket-table">
@@ -107,13 +107,253 @@
                     <div class="empty-state-text">Không có vé hay tên khách hàng nào</div>
                 </div>
 
-                <div class="pagination-container" >
+                <div class="pagination-container">
                     <span class="info"></span>
                     <div class="pagination">
-                        
+
                     </div>
                 </div>
             </div>
+
+            <div class="modal-overlay" id="addModal">
+                <form class="modal-container" id="addForm">
+                    <div class="modal-header">
+                        <h3>Thêm Mới Đặt Vé</h3>
+                        <i class="fa-solid fa-xmark close-icon"></i>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="nameCustomer">Chọn khách hàng</label>
+                            <div class="input-with-icon">
+                                <img src="../assets/images/ticket (3).png">
+                                <input type="text" id="nameCustomer" name="nameCustomer" placeholder="Tìm kiếm tên...">
+                                <i class="fa-solid fa-chevron-down arrow-down"></i>
+                            </div>
+                            <span class="error" id="error-name"></span>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="selectMovie">Chọn phim</label>
+                                <div class="input-with-icon">
+                                    <i class="fa-solid fa-film"></i>
+                                    <select id="selectMovie" name="selectMovie">
+                                        <option value="">Chọn phim đang chiếu...</option>
+                                        <option value="1">Dune: Hành tinh cát Phần 2</option>
+                                        <option value="2">Gấu trúc Kung Fu 4</option>
+                                        <option value="3">Godzilla x Kong: Đế chế mới</option>
+                                        <option value="123">Gridman: Đa vũ trụ hỗn loạn</option>
+                                        <option value="16">Bản án dúng sĩ</option>
+                                        <option value="22">Lớp học công cụ</option>
+                                        <option value="23">Cánh hoa luân hồi</option>
+                                    </select>
+                                </div>
+                                <span class="error" id="error-movie"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="selectDate">Chọn suất chiếu</label>
+                                <div class="input-with-icon">
+                                    <i class="fa-solid fa-calendar-days"></i>
+                                    <select id="selectDate" name="selectDate">
+                                        <option value="">Chọn suất</option>
+                                        <option value="1">21:45 24/03/2026</option>
+                                        <option value="1">9:00 25/03/2026</option>
+                                        <option value="1">13:00 25/03/2026</option>
+                                        <option value="1">19:00 25/03/2026</option>
+                                        <option value="1">21:30 26/03/2026</option>
+                                        <option value="1">10:00 27/03/2026</option>
+                                        <option value="1">21:30 27/03/2026</option>
+                                        <option value="1">8:30 28/03/2026</option>
+                                        <option value="1">19:00 28/03/2026</option>
+                                    </select>
+                                </div>
+                                <span class="error" id="error-date"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="selectSeats">Chọn ghế</label>
+                            <div class="input-with-icon">
+                                <i class="fa-solid fa-couch"></i>
+                                <input type="text" id="selectSeats" name="selectSeats" value="F5, F6">
+                            </div>
+                            <small class="helper-text error" id="error-seats">Phân cách các ghế bằng dấu phẩy</small>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="paymentMethod">Phương thức thanh toán</label>
+                                <div class="input-with-icon">
+                                    <i class="fa-solid fa-money-bills"></i>
+                                    <select id="paymentMethod" name="paymentMethod">
+                                        <option>Tiền mặt</option>
+                                        <option>Chuyển khoản</option>
+                                    </select>
+                                </div>
+                                <span class="error" id="error-method"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="status">Trạng thái thanh toán</label>
+                                <div class="input-with-icon">
+                                    <select id="status" name="status">
+                                        <option value="Đã thanh toán">Đã thanh toán</option>
+                                        <option value="Chờ xử lý">Chờ xử lý</option>
+                                    </select>
+                                </div>
+                                <span class="error" id="error-status"></span>
+                            </div>
+                        </div>
+
+                        <div class="total-box">
+                            <div class="total-left">
+                                <div class="total-icon">
+                                    <img src="../assets/images/ticketOverlay.png">
+                                </div>
+                                <div class="total-amount-info">
+                                    <span class="total-label">TỔNG TIỀN DỰ KIẾN</span>
+                                    <span class="price">240.000 đ</span>
+                                </div>
+                            </div>
+                            <div class="total-right">
+                                <span>2 vé x 120.000 đ</span>
+                                <p>Đã bao gồm VAT</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn-cancel">Hủy</button>
+                        <button class="btn-confirm">
+                            <i class="fa-solid fa-check"></i> Xác nhận đặt vé
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-overlay" id="editModal">
+                <form class="modal-container" id="editForm">
+                    <div class="modal-header">
+                        <h3>Cập Nhật Thông Tin Vé</h3>
+                        <i class="fa-solid fa-xmark close-icon"></i>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="editNameCustomer">Khách hàng</label>
+                            <div class="input-with-icon">
+                                <i class="fa-solid fa-user" style="color: #666; position: absolute; left: 12px;"></i>
+                                <input type="text" id="editNameCustomer" name="nameCustomer" value="Nguyễn Văn A">
+                                <i class="fa-solid fa-chevron-down arrow-down"></i>
+                            </div>
+                            <span class="error" id="error-edit-name"></span>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="editSelectMovie">Phim</label>
+                                <div class="input-with-icon">
+                                    <i class="fa-solid fa-film"></i>
+                                    <select id="editSelectMovie" name="selectMovie">
+                                        <option value="1" selected>Dune: Hành tinh cát Phần 2</option>
+                                        <option value="2">Gấu trúc Kung Fu 4</option>
+                                    </select>
+                                </div>
+                                <span class="error" id="error-edit-movie"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="editSelectDate">Suất chiếu</label>
+                                <div class="input-with-icon">
+                                    <i class="fa-solid fa-calendar-days"></i>
+                                    <select id="editSelectDate" name="selectDate">
+                                        <option value="1" selected>19:30 25/10/2024</option>
+                                    </select>
+                                </div>
+                                <span class="error" id="error-edit-date"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editSelectSeats">Vị trí ghế</label>
+                            <div class="input-with-icon">
+                                <i class="fa-solid fa-couch"></i>
+                                <input type="text" id="editSelectSeats" name="selectSeats" value="H12, H13">
+                            </div>
+                            <small class="helper-text error" id="error-edit-seats">Phân cách các ghế bằng dấu
+                                phẩy</small>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="editPaymentMethod">Phương thức thanh toán</label>
+                                <div class="input-with-icon">
+                                    <i class="fa-solid fa-money-bills"></i>
+                                    <select id="editPaymentMethod" name="paymentMethod">
+                                        <option selected>Chuyển khoản</option>
+                                        <option>Tiền mặt</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="editStatus">Trạng thái thanh toán</label>
+                                <div class="input-with-icon">
+                                    <select id="editStatus" name="status">
+                                        <option value="Đã thanh toán" selected>Đã thanh toán</option>
+                                        <option value="Chờ xử lý">Chờ xử lý</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editNote">Ghi chú</label>
+                            <textarea id="editNote" name="note" rows="3" placeholder="Nhập ghi chú của admin..."
+                                style="width: 100%; background: #2a2525; border: 1px solid #3d3d3d; border-radius: 8px; color: white; padding: 10px; outline: none; resize: none;"></textarea>
+                        </div>
+
+                        <div class="total-box">
+                            <div class="total-left">
+                                <div class="total-icon">
+                                    <img src="../assets/images/ticketOverlay.png">
+                                </div>
+                                <div class="total-amount-info">
+                                    <span class="total-label">TỔNG TIỀN THANH TOÁN</span>
+                                    <span class="price">240.000 đ</span>
+                                </div>
+                            </div>
+                            <div class="total-right">
+                                <span>Tổng số ghế: 2</span>
+                                <p>Đã bao gồm VAT</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn-cancel">Hủy</button>
+                        <button type="submit" class="btn-confirm">
+                            <i class="fa-solid fa-floppy-disk"></i> Lưu thay đổi
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-overlay" id="cancelModal">
+                <div class="cancel-modal-container">
+                    <div class="icon-cancel">
+                        <div class="warning-icon"><img src="../assets/images/Warning Icon.png" /></div>
+                    </div>
+
+                    <div class="cancel-modal-content">
+                    </div>
+
+                    <div class="cancel-modal-footer">
+                        <button type="button" class="btn-cancel closeModal">Đóng</button>
+                        <button type="button" class="btn-confirm-cancel" id="btn-confirm-cancel">Xác nhận hủy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="toast-container"></div>
         </main>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
